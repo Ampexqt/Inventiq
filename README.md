@@ -67,11 +67,10 @@ Open your first terminal window and run:
 cd server
 npm install
 
-# Create a .env file to set your DB credentials
-# DB_HOST=localhost
-# DB_USER=root
-# DB_PASSWORD=
-# DB_NAME=inventiq
+# Set up your environment variables
+# Copy the example file and rename it to .env
+cp .env.example .env
+# Open .env and ensure your MySQL password and DB name are correct
 
 npm run dev
 ```
@@ -82,8 +81,9 @@ Leave the first terminal running, open a **new, second terminal window**, and ru
 cd client
 npm install
 
-# The frontend defaults to http://localhost:5000/api 
-# Create a .env and set VITE_API_URL to override this if needed
+# Set up your environment variables
+# Copy the example file and rename it to .env
+cp .env.example .env
 
 npm run dev
 ```
