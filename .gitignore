@@ -1,0 +1,12 @@
+# Root Dependencies
+node_modules/
+.env
+.env.*
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# AI Agent Files
+.agents/
+skills-lock.json
