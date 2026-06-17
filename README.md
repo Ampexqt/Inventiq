@@ -55,11 +55,14 @@ Inventiq/
 
 ## 🚀 Quick Start Guide
 
+> **Note for Beginners:** You will need to open **two separate terminal windows** to run this project—one for the backend server and one for the frontend client.
+
 ### 1. Database Setup
 1. Ensure your local MySQL server (e.g., WAMP, XAMPP) is running.
 2. Execute the `.sql` script found in the `database/` directory to construct the `inventiq` database and tables.
 
-### 2. Backend Setup
+### 2. Start the Backend (Terminal 1)
+Open your first terminal window and run:
 ```bash
 cd server
 npm install
@@ -73,7 +76,8 @@ npm install
 npm run dev
 ```
 
-### 3. Frontend Setup
+### 3. Start the Frontend (Terminal 2)
+Leave the first terminal running, open a **new, second terminal window**, and run:
 ```bash
 cd client
 npm install
@@ -83,7 +87,7 @@ npm install
 
 npm run dev
 ```
-Navigate to `http://localhost:5173` to view the application!
+Navigate to `http://localhost:5173` in your browser to view the application!
 
 ## 📖 Documentation
 For the absolute source of truth regarding database schemas, feature requirements, and UI guidelines, please refer exclusively to the `/docs` directory. No features fall outside the bounds of these strict guidelines.
