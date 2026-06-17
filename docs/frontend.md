@@ -15,9 +15,10 @@ The frontend communicates with the backend through REST API requests.
 * React
 * TypeScript
 * Vite
-* HTML
-* CSS
-* JavaScript
+* Tailwind CSS
+* React Router DOM
+* Axios
+* HTML / CSS / JavaScript
 
 ---
 
