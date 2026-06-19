@@ -1,0 +1,26 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Dependency directories
+node_modules/
+
+# Typescript build output
+dist/
+build/
+
+# Environment variables
+.env
+.env.test
+.env.production
+
+# OS generated files
+.DS_Store
+Thumbs.db
