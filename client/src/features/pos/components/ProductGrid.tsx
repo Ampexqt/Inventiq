@@ -82,33 +82,49 @@ const ProductGrid: React.FC<ProductGridProps> = ({
             
             {/* The .map() function loops through the array. We must give each item a unique 'key' */}
             {filteredProducts.map(product => (
-              <Card key={product.product_id} className="shadow-sm border-slate-200 flex flex-col justify-between hover:border-primary/30 transition-colors">
-                <CardContent className="p-4 flex flex-col h-full justify-between gap-4">
-                  <div>
-                    <div className="flex justify-between items-start gap-2 mb-2">
-                      <h3 className="font-semibold text-slate-800 leading-tight">{product.product_name}</h3>
+              <Card 
+                key={product.product_id} 
+                className="group relative shadow-sm hover:shadow-md border-slate-200 hover:border-primary/30 transition-all duration-300 flex flex-col justify-between hover:-translate-y-0.5 overflow-hidden"
+              >
+                {/* Optional subtle top border highlight on hover */}
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary/0 via-primary/0 to-primary/0 group-hover:from-primary/40 group-hover:via-primary/60 group-hover:to-primary/40 transition-all duration-500" />
+                
+                <CardContent className="p-5 flex flex-col h-full justify-between gap-5 relative z-10">
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-start gap-3">
+                      <h3 className="font-semibold text-slate-800 leading-tight line-clamp-2 flex-1 pt-1">{product.product_name}</h3>
                       
                       {/* Conditionally show the stock badge based on how many are left */}
                       {product.stock_quantity === 0 ? (
-                        <Badge variant="outline" className="bg-rose-50 text-rose-700 border-rose-200 font-medium rounded-md px-1.5 py-0 shadow-none text-[10px] uppercase whitespace-nowrap shrink-0">Out</Badge>
+                        <Badge variant="outline" className="bg-rose-50/80 text-rose-700 border-rose-200/60 font-medium rounded-md px-2 py-0.5 shadow-none text-[10px] uppercase whitespace-nowrap shrink-0">Out</Badge>
                       ) : product.stock_quantity <= 5 ? (
-                        <Badge variant="outline" className="bg-amber-50 text-amber-700 border-amber-200 font-medium rounded-md px-1.5 py-0 shadow-none text-[10px] whitespace-nowrap shrink-0">{product.stock_quantity} left</Badge>
+                        <Badge variant="outline" className="bg-amber-50/80 text-amber-700 border-amber-200/60 font-medium rounded-md px-2 py-0.5 shadow-none text-[10px] whitespace-nowrap shrink-0">{product.stock_quantity} left</Badge>
                       ) : (
-                        <Badge variant="outline" className="bg-emerald-50 text-emerald-700 border-emerald-200 font-medium rounded-md px-1.5 py-0 shadow-none text-[10px] whitespace-nowrap shrink-0">{product.stock_quantity} in stock</Badge>
+                        <Badge variant="outline" className="bg-emerald-50/80 text-emerald-700 border-emerald-200/60 font-medium rounded-md px-2 py-0.5 shadow-none text-[10px] whitespace-nowrap shrink-0">{product.stock_quantity} in stock</Badge>
                       )}
                     </div>
-                    {/* Format price with commas */}
-                    <p className="font-bold text-lg text-slate-900 mb-4">₱{Number(product.price).toLocaleString(undefined, { minimumFractionDigits: 2 })}</p>
+                    
+                    {/* Format price with smaller currency symbol and prominent amount */}
+                    <div className="flex items-baseline text-slate-900">
+                      <span className="text-sm font-semibold text-slate-500 mr-0.5">₱</span>
+                      <span className="text-2xl font-bold tracking-tight">
+                        {Number(product.price).toLocaleString(undefined, { minimumFractionDigits: 2 })}
+                      </span>
+                    </div>
                   </div>
                   
                   {/* Add to Cart Button */}
                   <Button 
-                    className="w-full bg-primary text-white hover:bg-primary/90 shadow-sm"
+                    className={`w-full shadow-sm transition-all duration-300 ${
+                      product.stock_quantity === 0 
+                        ? "bg-slate-100 text-slate-400 cursor-not-allowed hover:bg-slate-100" 
+                        : "bg-white text-primary border border-primary/20 hover:bg-primary hover:text-white group-hover:border-primary"
+                    }`}
                     onClick={() => addToCart(product)}
-                    disabled={product.stock_quantity === 0} // Disable if out of stock
-                    variant={product.stock_quantity === 0 ? "secondary" : "default"}
+                    disabled={product.stock_quantity === 0}
+                    variant="outline"
                   >
-                    <Plus className="w-4 h-4 mr-1.5" />
+                    <Plus className={`w-4 h-4 mr-1.5 ${product.stock_quantity === 0 ? 'opacity-50' : ''}`} />
                     {product.stock_quantity === 0 ? "Out of Stock" : "Add to Cart"}
                   </Button>
                 </CardContent>
