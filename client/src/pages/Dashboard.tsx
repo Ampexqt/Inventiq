@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Package, ShoppingBag, Banknote } from 'lucide-react';
+import { Package, ShoppingBag, Banknote, Boxes } from 'lucide-react';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import api from '../lib/api';
 
@@ -64,7 +64,7 @@ const Dashboard: React.FC = () => {
                 <p className="text-xs text-slate-500 mt-1">Units in stock</p>
               </div>
               <div className="p-2.5 bg-sky-100 rounded-lg">
-                <Package className="w-5 h-5 text-sky-600" />
+                <Boxes className="w-5 h-5 text-sky-600" />
               </div>
             </div>
           </CardContent>
