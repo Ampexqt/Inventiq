@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
-import { Eye, FileText, SearchX } from 'lucide-react';
+import { Eye, FileText, SearchX, CheckCircle2 } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter, DialogDescription } from '@/components/ui/dialog';
 import { Badge } from '@/components/ui/badge';
@@ -46,8 +46,12 @@ const SalesTransactions: React.FC = () => {
       } else {
         setSales(response.data);
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error fetching sales:', error);
+      if (error.response && error.response.data) {
+        console.error('Backend Error Details:', error.response.data.details);
+      }
+      setSales([]);
     }
   };
 
@@ -106,7 +110,7 @@ const SalesTransactions: React.FC = () => {
                       {searchQuery ? (
                         <>
                           <SearchX className="h-8 w-8 text-slate-400 mb-2" />
-                          <span className="text-sm font-medium">No sales found</span>
+                          <span className="text-sm font-medium">No receipt found</span>
                           <span className="text-xs text-slate-400">Try adjusting your search.</span>
                         </>
                       ) : (
@@ -171,18 +175,26 @@ const SalesTransactions: React.FC = () => {
             <>
               <DialogHeader>
                 <DialogTitle className="text-xl">Receipt Details</DialogTitle>
-                <DialogDescription>
-                  Transaction processed on {formatDate(activeReceipt.transaction_date)}
+                <DialogDescription className="text-slate-500">
+                  Transaction processed on <strong className="font-bold text-slate-900">{formatDate(activeReceipt.transaction_date)}</strong>
                 </DialogDescription>
               </DialogHeader>
               
               <div className="py-2">
-                <div className="flex justify-between items-center bg-slate-50 p-3 rounded-lg border border-slate-100 mb-4">
-                  <div className="flex items-center gap-2">
-                    <FileText className="h-5 w-5 text-primary" />
-                    <span className="font-semibold text-slate-800">{activeReceipt.receipt_number}</span>
+                <div className="flex justify-between items-center bg-white p-3 rounded-xl border border-slate-200 mb-4 shadow-sm">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 bg-slate-100 rounded-lg">
+                      <FileText className="h-5 w-5 text-slate-600" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-medium text-slate-400 uppercase tracking-wider mb-0.5">Receipt Number</p>
+                      <p className="font-bold text-slate-900 leading-none">{activeReceipt.receipt_number}</p>
+                    </div>
                   </div>
-                  <Badge variant="secondary" className="bg-emerald-50 text-emerald-700 border-emerald-200 font-medium">Paid</Badge>
+                  <Badge className="bg-emerald-500 hover:bg-emerald-600 text-white border-transparent font-bold shadow-sm flex items-center gap-1.5 px-3 py-1 uppercase tracking-wider">
+                    <CheckCircle2 className="w-3.5 h-3.5" />
+                    Paid
+                  </Badge>
                 </div>
                 
                 <div className="w-full bg-white rounded-lg border border-slate-200 overflow-hidden">
