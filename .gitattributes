@@ -1,0 +1,6 @@
+# Ignore compiled folders from language stats
+client/dist/* linguist-vendored
+server/dist/* linguist-vendored
+
+# Ignore your main CSS file so GitHub focuses on your TypeScript
+client/src/index.css linguist-vendored
