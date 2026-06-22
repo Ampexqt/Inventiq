@@ -94,7 +94,7 @@ const Dashboard: React.FC = () => {
           <CardContent>
             <div className="flex justify-between items-end mt-2">
               <div>
-                <div className="text-3xl font-bold text-slate-900">₱{stats.totalRevenue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>
+                <div className="text-3xl font-bold text-slate-900">₱{parseFloat(stats.totalRevenue.toString()).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>
                 <p className="text-xs text-slate-500 mt-1">All-time sales</p>
               </div>
               <div className="p-2.5 bg-emerald-100 rounded-lg">
