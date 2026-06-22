@@ -11,6 +11,8 @@
     <img src="https://img.shields.io/badge/Express.js-404D59?style=for-the-badge" alt="Express.js" />
     <img src="https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL" />
   </p>
+
+  <h3><a href="https://inventiq-pos.vercel.app/">🌐 View Live Demo</a></h3>
 </div>
 
 ---
@@ -127,6 +129,17 @@ Navigate to `http://localhost:5173` in your browser to view the application!
 - **Framework:** Express.js
 - **Language:** TypeScript
 - **Database:** MySQL (WAMP Server compatible)
+
+## ☁️ Deployment Architecture
+
+This project is deployed across distinct environments to ensure optimal performance, security, and scalability:
+
+- **Frontend (Client):** Deployed on **Vercel** ([Live Demo](https://inventiq-pos.vercel.app/)).
+  - *Purpose:* Vercel provides a global Content Delivery Network (CDN), ensuring the React application loads blazingly fast for users regardless of their location.
+- **Backend (Server):** Deployed on **Render**.
+  - *Purpose:* Render provides a reliable, persistent runtime environment for the Node.js/Express server to handle API requests, process business logic, and manage secure connections to the database.
+- **Database:** Hosted on **TiDB Cloud Serverless**.
+  - *Purpose:* TiDB Cloud Serverless offers a scalable, highly available MySQL-compatible database ensuring secure data storage and automated backups, separated from the application logic.
 
 ## 📂 Project Structure
 
