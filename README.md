@@ -12,7 +12,7 @@
     <img src="https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL" />
   </p>
 
-  <h3><a href="https://inventiq-pos.vercel.app/">🌐 View Live Demo</a></h3>
+  <h3><a href="https://inventiq-tan.vercel.app/">🌐 View Live Demo</a></h3>
 </div>
 
 ---
