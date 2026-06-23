@@ -147,7 +147,6 @@ This project is deployed across distinct environments to ensure optimal performa
 Inventiq/
 ├── client/          # React + Vite frontend application
 ├── server/          # Node.js + Express backend API
-├── database/        # MySQL database schemas and queries
 └── docs/            # Strict project guidelines and documentation
 ```
 
