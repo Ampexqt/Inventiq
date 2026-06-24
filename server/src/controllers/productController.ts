@@ -43,7 +43,7 @@ export const getProducts = async (req: Request, res: Response) => {
       const totalPages = Math.ceil(totalCount / limit);
 
       // Fetch the actual data
-      const [rows] = await pool.query(`SELECT * FROM products ${searchCondition} ORDER BY created_at DESC LIMIT ? OFFSET ?`, [...queryParams, limit, offset]);
+      const [rows] = await pool.query(`SELECT * FROM products ${searchCondition} ORDER BY created_at DESC LIMIT ${limit} OFFSET ${offset}`, queryParams);
       
       // Send JSON response back to the React app
       res.json({

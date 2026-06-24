@@ -21,10 +21,6 @@ const pool = mysql.createPool({
   user: process.env.DB_USER || 'root', 
   password: process.env.DB_PASSWORD || '', 
   database: process.env.DB_NAME || 'inventiq',
-  ssl: {
-    minVersion: 'TLSv1.2',
-    rejectUnauthorized: true
-  },
   waitForConnections: true, // If all 10 taxis are busy, wait for one to return
   connectionLimit: 10,      // Maximum number of connections at once
   queueLimit: 0             // No limit to how many requests can wait in line
