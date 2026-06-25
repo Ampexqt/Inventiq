@@ -11,11 +11,12 @@
 - Safely and accurately store historical **Sales Transactions** and their individual details.
 - Display a real-time **Dashboard** to monitor active product counts, revenue, and recent sales activities.
 
-## Architecture
+## System Architecture (Headless)
 
-The project follows a standard client-server architecture:
-- **Client**: A modern single-page application (SPA) built with React, TypeScript, and Vite. It utilizes Tailwind CSS for a clean, responsive user interface.
-- **Server**: A RESTful API built with Node.js and Express.js, written in TypeScript.
+The project follows a decoupled **Headless Architecture**, where the frontend presentation layer is completely separated from the backend data and logic layer. They communicate exclusively via a REST API.
+
+- **Frontend (Presentation Layer)**: A modern, standalone single-page application (SPA) built with React, TypeScript, and Vite. It runs in the user's browser, manages its own state and routing, and uses Tailwind CSS for a responsive UI. It consumes data from the backend via HTTP requests (using Axios).
+- **Backend (Headless API)**: A lightweight, stateless RESTful API built with Node.js and Express.js using TypeScript. It is solely responsible for business logic, data validation, and database operations. It does not render any HTML views.
 - **Database**: A MySQL database storing Products, Sales, and Sales Details.
 
 ## Key Features Implemented
